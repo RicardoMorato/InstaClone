@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import {
   ScrollView,
   FlatList,
@@ -6,21 +6,27 @@ import {
 import { ImageHeader } from './src/Components/ImageHeader';
 import { Photo } from './src/Components/Photo';
 
-const info = [
-  {_id: '1', usuario: "Ricardo"},
-  {_id: '2', usuario: "Nythia"},
-  {_id: '3', usuario: "Rebeca"},
-];
-
 const App = () => {
+  const [info, setInfo] = useState([]);
+
+  const getInfo = async () => {
+    const infoHTTP = await fetch('http://10.0.2.2:3030/feed');
+    const infoJson = await infoHTTP.json();
+    setInfo(infoJson);
+  };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
+
   return (
     <ScrollView>
       <FlatList
         data={info}
-        keyExtractor={(item) => item._id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) =>
           <Fragment>
-            <ImageHeader username={item.usuario} />
+            <ImageHeader username={item.userName} />
             <Photo />
           </Fragment>
         }
