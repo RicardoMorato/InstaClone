@@ -7,11 +7,11 @@ import {
 
 import style from './style';
 
-const ImageHeader = ({ username }) => {
+const ImageHeader = ({ username, urlImage }) => {
   return (
     <View style={style.header}>
       <Image
-        source={require('../../../res/img/alura.jpg')}
+        source={{ uri: urlImage }}
         style={style.userPhoto}
       />
       <Text>{username}</Text>

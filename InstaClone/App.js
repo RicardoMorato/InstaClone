@@ -26,8 +26,14 @@ const App = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) =>
           <Fragment>
-            <ImageHeader username={item.userName} />
-            <Photo />
+            <ImageHeader
+              username={item.userName}
+              urlImage={item.userURL}
+            />
+            <Photo
+              photoUrl={item.url}
+              description={item.description}
+            />
           </Fragment>
         }
       />

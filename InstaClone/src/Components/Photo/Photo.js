@@ -5,14 +5,14 @@ import {
 } from 'react-native';
 import style from './style';
 
-const Photo = () => {
+const Photo = ({ photoUrl, description }) => {
   return (
     <Fragment>
       <Image
-        source={require('../../../res/img/alura.jpg')}
+        source={{ uri: photoUrl }}
         style={style.photo}
       />
-      <Text>Descrição da foto</Text>
+      <Text>{description}</Text>
     </Fragment>
   );
 };
