@@ -9,6 +9,7 @@ import style from './style';
 
 const Photo = ({ photoUrl, description, qtdLikes }) => {
   const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(qtdLikes);
 
   const imgLike = (liked) => {
     if (liked) {
@@ -19,6 +20,15 @@ const Photo = ({ photoUrl, description, qtdLikes }) => {
   };
 
   const likePhoto = () => {
+    let qtd = likes;
+
+    if (liked) {
+      qtd -= 1;
+    } else {
+      qtd += 1;
+    }
+
+    setLikes(qtd);
     setLiked(!liked);
   };
 
@@ -38,7 +48,7 @@ const Photo = ({ photoUrl, description, qtdLikes }) => {
           />
         </TouchableOpacity>
 
-        <Text style={style.description} >{qtdLikes}</Text>
+        <Text style={style.description} >{likes}</Text>
       </View>
     </Fragment>
   );
