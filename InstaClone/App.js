@@ -6,27 +6,37 @@
  * @flow
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Text,
   Image,
   ScrollView,
   Dimensions,
   StyleSheet,
+  FlatList,
 } from 'react-native';
+
+const info = [
+  {_id: '1', usuario: "Ricardo"},
+  {_id: '2', usuario: "Nythia"},
+  {_id: '3', usuario: "Rebeca"},
+];
 
 const App = () => {
   return (
     <ScrollView>
-      <Text>Ricardo</Text>
-      <Image
-        source={require('./res/img/alura.jpg')}
-        style={styles.image}
-      />
-      <Text>Nythia</Text>
-      <Image
-        source={require('./res/img/alura.jpg')}
-        style={styles.image}
+      <FlatList
+        data={info}
+        keyExtractor={(item) => item._id.toString()}
+        renderItem={({ item }) =>
+          <Fragment>
+            <Text>{item.usuario}</Text>
+            <Image
+              source={require('./res/img/alura.jpg')}
+              style={styles.image}
+            />
+          </Fragment>
+        }
       />
     </ScrollView>
   );
