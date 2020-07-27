@@ -5,18 +5,13 @@ import {
 } from 'react-native';
 import { ImageHeader } from './src/Components/ImageHeader';
 import { Photo } from './src/Components/Photo';
+import getInfo from  './src/apiCommunication/feed';
 
 const App = () => {
   const [info, setInfo] = useState([]);
 
-  const getInfo = async () => {
-    const infoHTTP = await fetch('http://10.0.2.2:3030/feed');
-    const infoJson = await infoHTTP.json();
-    setInfo(infoJson);
-  };
-
   useEffect(() => {
-    getInfo();
+    getInfo(setInfo);
   }, []);
 
   return (
