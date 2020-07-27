@@ -3,10 +3,11 @@ import {
   Image,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import style from './style';
 
-const Photo = ({ photoUrl, description }) => {
+const Photo = ({ photoUrl, description, qtdLikes }) => {
   const [liked, setLiked] = useState(false);
 
   const imgLike = (liked) => {
@@ -17,6 +18,10 @@ const Photo = ({ photoUrl, description }) => {
     }
   };
 
+  const likePhoto = () => {
+    setLiked(!liked);
+  };
+
   return (
     <Fragment>
       <Image
@@ -25,12 +30,16 @@ const Photo = ({ photoUrl, description }) => {
       />
       <Text style={style.description} >{description}</Text>
 
-      <TouchableOpacity>
-        <Image
-          source={imgLike(liked)}
-          style={style.like}
-        />
-      </TouchableOpacity>
+      <View style={style.viewLikes}>
+        <TouchableOpacity onPress={likePhoto} >
+          <Image
+            source={imgLike(liked)}
+            style={style.like}
+          />
+        </TouchableOpacity>
+
+        <Text style={style.description} >{qtdLikes}</Text>
+      </View>
     </Fragment>
   );
 };

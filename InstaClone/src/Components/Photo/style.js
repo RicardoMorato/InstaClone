@@ -14,8 +14,10 @@ const style = StyleSheet.create({
   like: {
     width: 40,
     height: 40,
-    marginHorizontal: 10,
-    marginBottom: 20,
+    marginLeft: 10,
+  },
+  viewLikes: {
+    flexDirection: 'row',
   },
 });
 

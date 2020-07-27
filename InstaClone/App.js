@@ -28,6 +28,7 @@ const App = () => {
             <Photo
               photoUrl={item.url}
               description={item.description}
+              qtdLikes={item.likes}
             />
           </Fragment>
         }

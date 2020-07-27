@@ -5,6 +5,7 @@ const style = StyleSheet.create({
     width: 40,
     height: 40,
     margin: 10,
+    marginTop: 20,
     borderRadius: 30,
   },
   header: {
