@@ -15,6 +15,7 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
+import ImageHeader from './src/Components/ImageHeader';
 
 const info = [
   {_id: '1', usuario: "Ricardo"},
@@ -30,7 +31,7 @@ const App = () => {
         keyExtractor={(item) => item._id.toString()}
         renderItem={({ item }) =>
           <Fragment>
-            <Text>{item.usuario}</Text>
+            <ImageHeader username={item.usuario} />
             <Image
               source={require('./res/img/alura.jpg')}
               style={styles.image}
