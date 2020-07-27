@@ -3,8 +3,8 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import ImageHeader from './src/Components/ImageHeader';
-import Photo from './src/Components/Photo';
+import { ImageHeader } from './src/Components/ImageHeader';
+import { Photo } from './src/Components/Photo';
 
 const info = [
   {_id: '1', usuario: "Ricardo"},
