@@ -2,6 +2,8 @@ import React, { Fragment, useState, useEffect } from 'react';
 import {
   ScrollView,
   FlatList,
+  StatusBar,
+  Platform,
 } from 'react-native';
 import { ImageHeader } from './src/Components/ImageHeader';
 import { Photo } from './src/Components/Photo';
@@ -15,8 +17,17 @@ const App = () => {
     getInfo(setInfo);
   }, []);
 
+  let heigth = 0;
+  if (Platform.OS === 'ios') {
+    heigth = 35;
+  }
+
   return (
-    <ScrollView>
+    <ScrollView style={{ marginTop: heigth }}>
+      <StatusBar
+        backgroundColor="white"
+        barStyle="dark-content"
+      />
       <FlatList
         data={info}
         keyExtractor={(item) => item.id.toString()}
