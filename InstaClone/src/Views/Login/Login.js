@@ -5,6 +5,7 @@ import {
   Button,
   View,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import style from './style';
 import logIn from '../../apiCommunication/login';
 
@@ -16,6 +17,10 @@ const Login = () => {
   const tryLogIn = async () => {
     try {
       const token = await logIn(user, password);
+      await AsyncStorage.setItem('instaCloneToken', token);
+
+      // Goes to feed screen
+
     } catch (error) {
       setErrorMessage(error.message);
     }
