@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
       await AsyncStorage.setItem('instaCloneToken', token);
 
       // Goes to feed screen
-      navigation.push('Feed');
+      navigation.replace('Feed', { user });
 
     } catch (error) {
       setErrorMessage(error.message);
@@ -52,6 +52,14 @@ const Login = ({ navigation }) => {
       </View>
     </Fragment>
   );
+};
+
+Login.navigationOptions = () => {
+  const options = {
+    title: 'Login',
+  }
+
+  return options;
 };
 
 export default Login;

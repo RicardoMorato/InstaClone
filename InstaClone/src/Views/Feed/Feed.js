@@ -17,13 +17,8 @@ const Feed = () => {
     getInfo(setInfo);
   }, []);
 
-  let heigth = 0;
-  if (Platform.OS === 'ios') {
-    heigth = 35;
-  }
-
   return (
-    <ScrollView style={{ marginTop: heigth }}>
+    <ScrollView>
       <StatusBar
         backgroundColor="white"
         barStyle="dark-content"
@@ -48,6 +43,18 @@ const Feed = () => {
       />
     </ScrollView>
   );
+};
+
+Feed.navigationOptions = ({ navigation }) => {
+  const options = {
+    title: navigation.getParam('user'),
+  }
+
+  if (Platform.OS === 'android') {
+    options.headerShown = false;
+  }
+
+  return options;
 };
 
 export default Feed;
