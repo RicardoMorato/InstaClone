@@ -6,13 +6,19 @@ import {
   View,
 } from 'react-native';
 import style from './style';
+import logIn from '../../apiCommunication/login';
 
 const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const tryLogIn = () => {
-    console.warn(`Logging user: ${user}, password: ${password}`);
+  const tryLogIn = async () => {
+    try {
+      const token = await logIn(user, password);
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -29,6 +35,8 @@ const Login = () => {
           secureTextEntry={true}
           onChangeText={text => setPassword(text)}
         />
+
+      <Text>{errorMessage}</Text>
       </View>
       <View style={style.buttonView}>
         <Button

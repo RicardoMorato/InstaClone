@@ -5,6 +5,7 @@ const getInfo = async (callback) => {
   if (Platform.OS === 'ios') {
     url = 'localhost';
   }
+
   const infoHTTP = await fetch(`http://${url}:3030/feed`);
   const infoJson = await infoHTTP.json();
   callback(infoJson);
